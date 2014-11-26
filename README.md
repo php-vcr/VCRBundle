@@ -38,7 +38,7 @@ vcrvcr:
 
   * [Kévin Gomez](http://github.com/K-Phoen/)
   * [Ludovic Fleury](https://github.com/ludofleury) - to whom I borrowed the
-    design of the web profiler part from its [GuzzleBundle](https://github.com/ludofleury/GuzzleBundle/).
+    design of the web profiler part from his [GuzzleBundle](https://github.com/ludofleury/GuzzleBundle/).
 
 ## License
 
