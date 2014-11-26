@@ -1,7 +1,8 @@
 VCRBundle
 =========
 
-Integrates php-vcr into Symfony and its web profiler.
+Integrates [php-vcr](https://github.com/php-vcr/php-vcr) into Symfony and its
+web profiler.
 
 ## Installation
 
@@ -34,6 +35,12 @@ k_phoen_vcr:
         format: json
         name:   vcr
 ```
+
+## Credits
+
+  * [Kévin Gomez](http://github.com/K-Phoen/)
+  * [Ludovic Fleury](https://github.com/ludofleury) - to whom I borrowed the
+    design of the web profiler part from its [GuzzleBundle](https://github.com/ludofleury/GuzzleBundle/).
 
 ## License
 
