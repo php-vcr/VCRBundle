@@ -14,12 +14,20 @@ class KPhoenVCRExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
         $container->setParameter('kphoen.vcr.cassette.path', $config['cassette']['path']);
         $container->setParameter('kphoen.vcr.cassette.format', $config['cassette']['format']);
         $container->setParameter('kphoen.vcr.cassette.name', $config['cassette']['name']);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfiguration(array $config, ContainerBuilder $container)
+    {
+        return new Configuration();
+
     }
 
     public function getAlias()
