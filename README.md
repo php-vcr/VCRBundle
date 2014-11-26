@@ -5,9 +5,10 @@ Integrates php-vcr into Symfony and its web profiler.
 
 ## Installation
 
-Install the behavior adding `kphoen/doctrine-state-machine-bundle` to your composer.json or from CLI:
+Install the behavior adding `kphoen/vcr-bundle` to your composer.json or
+from CLI:
 
-```console
+```bash
 php composer.phar require kphoen/vcr-bundle
 ```
 
