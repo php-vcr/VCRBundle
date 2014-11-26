@@ -1,0 +1,15 @@
+parameters:
+    kphoen.vcr.cassette_path: %kernel.cache_dir%/vcr
+
+services:
+    data_collector.vcr:
+        class:      KPhoen\VCRBundle\DataCollector\VCRDataCollector
+        arguments:  [ @kphoen.vcr.recorder ]
+        tags:
+            - { name: data_collector, template: "KPhoenVCRBundle:Profiler:collector", id: "vcr_collector" }
+
+    kphoen.vcr.recorder:
+        class:          KPhoen\VCRBundle\VCR\LoggedVideoRecorder
+        factory_class:  KPhoen\VCRBundle\VCR\VCRFactory
+        factory_method: get
+        arguments:      [ KPhoen\VCRBundle\VCR\LoggedVideoRecorder ]
