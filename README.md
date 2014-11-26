@@ -6,11 +6,11 @@ web profiler.
 
 ## Installation
 
-Install the behavior adding `kphoen/vcr-bundle` to your composer.json or
+Install the behavior adding `php-vcr/vcr-bundle` to your composer.json or
 from CLI:
 
 ```bash
-php composer.phar require kphoen/vcr-bundle
+php composer.phar require php-vcr/vcr-bundle
 ```
 
 And declare the bundle in your `app/AppKernel.php` file:
@@ -18,18 +18,16 @@ And declare the bundle in your `app/AppKernel.php` file:
 ```php
 public function registerBundles()
 {
-    $bundles = array(
-        // ...
-        new KPhoen\VCRBundle\KPhoenVCRBundle(),
-        // ...
-    );
+    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        $bundles[] = new VCR\VCRBundle\VCRVCRBundle();
+    }
 }
 ```
 
 ## Configuration reference
 
 ```yaml
-k_phoen_vcr:
+vcrvcr:
     cassette:
         path:   '%kernel.cache_dir%/vcr'
         format: json

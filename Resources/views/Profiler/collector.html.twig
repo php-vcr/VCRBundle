@@ -20,7 +20,7 @@
 {% block menu %}
     {# the menu content #}
     <span class="label">
-        <span class="icon"><img src="{{ asset('bundles/kphoenvcr/images/tape.png') }}" alt="" /></span>
+        <span class="icon"><img src="{{ asset('bundles/vcrvcr/images/tape.png') }}" alt="" /></span>
         <strong>VCR</strong>
         <span class="count">
             <span>{{ collector.requestsCount }}</span>
@@ -31,10 +31,10 @@
 {% block panel %}
     <h2>Sent Requests</h2>
 
-    {% include 'KPhoenVCRBundle:Profiler:calls.html.twig' with {'logs': collector.requestsLogs } %}
+    {% include 'VCRVCRBundle:Profiler:calls.html.twig' with {'logs': collector.requestsLogs } %}
 {% endblock %}
 
 {% block head %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/kphoenvcr/css/profiler.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/vcrvcr/css/profiler.css') }}" />
 {% endblock %}

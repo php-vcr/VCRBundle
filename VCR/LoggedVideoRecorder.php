@@ -1,6 +1,6 @@
 <?php
 
-namespace KPhoen\VCRBundle\VCR;
+namespace VCR\VCRBundle\VCR;
 
 use Symfony\Component\HttpFoundation\Response;
 use VCR\Request;

@@ -1,28 +1,28 @@
 services:
     data_collector.vcr:
-        class:      KPhoen\VCRBundle\DataCollector\VCRDataCollector
-        arguments:  [ @kphoen.vcr.recorder ]
+        class:      VCR\VCRBundle\DataCollector\VCRDataCollector
+        arguments:  [ @vcr.recorder ]
         tags:
-            - { name: data_collector, template: "KPhoenVCRBundle:Profiler:collector", id: "vcr_collector" }
+            - { name: data_collector, template: "VCRVCRBundle:Profiler:collector", id: "vcr_collector" }
 
-    kphoen.vcr.config:
+    vcr.config:
         class: VCR\Configuration
         calls:
-            - [ setCassettePath, [ %kphoen.vcr.cassette.path% ] ]
-            - [ setStorage, [ %kphoen.vcr.cassette.format% ] ]
+            - [ setCassettePath, [ %vcr.cassette.path% ] ]
+            - [ setStorage, [ %vcr.cassette.format% ] ]
 
-    kphoen.vcr.http_client:
+    vcr.http_client:
         class: VCR\Util\HttpClient
 
-    kphoen.vcr.factory:
+    vcr.factory:
         class:          VCR\VCRFactory
         factory_class:  VCR\VCRFactory
         factory_method: getInstance
-        arguments:      [ @kphoen.vcr.config ]
+        arguments:      [ @vcr.config ]
 
-    kphoen.vcr.recorder:
-        class:      KPhoen\VCRBundle\VCR\LoggedVideoRecorder
-        arguments:  [ @kphoen.vcr.config, @kphoen.vcr.http_client, @kphoen.vcr.factory ]
+    vcr.recorder:
+        class:      VCR\VCRBundle\VCR\LoggedVideoRecorder
+        arguments:  [ @vcr.config, @vcr.http_client, @vcr.factory ]
         calls:
             - [ turnOn, [ ] ]
-            - [ insertCassette, [ %kphoen.vcr.cassette.name% ] ]
+            - [ insertCassette, [ %vcr.cassette.name% ] ]

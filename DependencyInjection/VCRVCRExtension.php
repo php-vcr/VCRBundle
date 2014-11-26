@@ -1,13 +1,13 @@
 <?php
 
-namespace KPhoen\VCRBundle\DependencyInjection;
+namespace VCR\VCRBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class KPhoenVCRExtension extends Extension
+class VCRVCRExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -16,9 +16,9 @@ class KPhoenVCRExtension extends Extension
 
         $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
-        $container->setParameter('kphoen.vcr.cassette.path', $config['cassette']['path']);
-        $container->setParameter('kphoen.vcr.cassette.format', $config['cassette']['format']);
-        $container->setParameter('kphoen.vcr.cassette.name', $config['cassette']['name']);
+        $container->setParameter('vcr.cassette.path', $config['cassette']['path']);
+        $container->setParameter('vcr.cassette.format', $config['cassette']['format']);
+        $container->setParameter('vcr.cassette.name', $config['cassette']['name']);
     }
 
     /**
@@ -32,6 +32,6 @@ class KPhoenVCRExtension extends Extension
 
     public function getAlias()
     {
-        return 'k_phoen_vcr';
+        return 'vcrvcr';
     }
 }

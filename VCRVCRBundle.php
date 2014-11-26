@@ -1,17 +1,17 @@
 <?php
 
-namespace KPhoen\VCRBundle;
+namespace VCR\VCRBundle;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use KPhoen\VCRBundle\VCR\VCRFactory;
+use VCR\VCRBundle\VCR\VCRFactory;
 
-class KPhoenVCRBundle extends Bundle
+class VCRVCRBundle extends Bundle
 {
     public function boot()
     {
-        $cassettePath = $this->container->getParameter('kphoen.vcr.cassette.path');
+        $cassettePath = $this->container->getParameter('vcr.cassette.path');
 
         if (!is_dir($cassettePath)) {
             $fs = new Filesystem();

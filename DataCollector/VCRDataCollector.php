@@ -1,12 +1,12 @@
 <?php
 
-namespace KPhoen\VCRBundle\DataCollector;
+namespace VCR\VCRBundle\DataCollector;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
-use KPhoen\VCRBundle\VCR\LoggedVideoRecorder;
+use VCR\VCRBundle\VCR\LoggedVideoRecorder;
 
 class VCRDataCollector extends DataCollector
 {
