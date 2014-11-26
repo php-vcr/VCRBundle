@@ -11,18 +11,11 @@ class KPhoenVCRBundle extends Bundle
 {
     public function boot()
     {
-        $cassettePath = $this->container->getParameter('kphoen.vcr.cassette_path');
+        $cassettePath = $this->container->getParameter('kphoen.vcr.cassette.path');
 
         if (!is_dir($cassettePath)) {
             $fs = new Filesystem();
             $fs->mkdir($cassettePath);
         }
-
-        $recorder = $this->container->get('kphoen.vcr.recorder');
-        $recorder->configure()->setStorage('json');
-        $recorder->configure()->setCassettePath($cassettePath);
-
-        $recorder->turnOn();
-        $recorder->insertCassette('kphoen_vcr');
     }
 }
