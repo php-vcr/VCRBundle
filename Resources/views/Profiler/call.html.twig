@@ -1,0 +1,35 @@
+<div id="log_{{ index }}" class="request {{ log.request.method|lower }}">
+    <div class="status icon {% if log.response.status != 200 %}error{% else %}success{% endif %}"></div>
+
+    <div class="summary">
+        <h3>
+            <span class="method">{{ log.request.method }}</span>
+            <span class="path">&nbsp{{ log.request.url }}</span>
+        </h3>
+        <div class="code">
+            <abbr title="{{ log.response.status_text }}">{{ log.response.status }}</abbr>
+        </div>
+    </div>
+
+    <div class="details">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#request_{{ index }}" data-toggle="tab">Request</a>
+            </li>
+            <li>
+                <a href="#response_{{ index }}" data-toggle="tab">Response</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            {% include 'KPhoenVCRBundle:Profiler:request.html.twig' with { 'index':index, 'request': log.request } %}
+            {% include 'KPhoenVCRBundle:Profiler:response.html.twig' with { 'index':index, 'response':log.response } %}
+        </div>
+
+        <div class="progress-striped" style="text-align:center;background-color:#ddd;margin:5px 0 30px 0;padding: 0;font-variant:small-caps;">
+            <div class="bar">
+                <a  style="display:block;text-decoration:none;" href="#log_{{ index }}" title="top">back to top</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="vcr_logs">
+    {% for index, log in logs %}
+        {% include 'KPhoenVCRBundle:Profiler:call.html.twig'  %}
+    {% endfor %}
+</div>
+
+{% include 'KPhoenVCRBundle:Profiler:javascript.html.twig' %}

@@ -30,30 +30,11 @@
 
 {% block panel %}
     <h2>Sent Requests</h2>
-    <table summary="Show sent requests">
-        <thead>
-            <tr>
-                <th colspan="2">Request</th>
-                <th>Response</th>
-            </tr>
-            <tr>
-                <th>Method</th>
-                <th>URL</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% if not collector.requestsCount %}
-            <tr><td colspan="3">No request sent.</td></tr>
-        {% else %}
-            {% for log in collector.requestsLogs %}
-            <tr>
-                <td>{{ log.request.method|default('-') }}</td>
-                <td>{{ log.request.url|default('-') }}</td>
-                <td>{{ log.response.status|default('-') }}</td>
-            </tr>
-            {% endfor %}
-        {% endif %}
-        </tbody>
-    </table>
+
+    {% include 'KPhoenVCRBundle:Profiler:calls.html.twig' with {'logs': collector.requestsLogs } %}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/kphoenvcr/css/profiler.css') }}" />
 {% endblock %}

@@ -1,0 +1,68 @@
+{% macro display_array_recursive(array, separator = ', ', opening_char = '[', closing_char = ']') -%}
+{{ opening_char }}
+{%- for key, value in array -%}
+    {%- if value is iterable -%}
+        {{ key }} => {{ _self.display_array_recursive(value, separator, opening_char, closing_char) }}
+    {%- else -%}
+        {{ key }} => {{ value }}
+        {%- if not loop.last %}{{ separator }}{% endif -%}
+    {%- endif -%}
+{%- endfor -%}
+{{ closing_char }}
+{%- endmacro %}
+
+<div id="request_{{ index }}" class="tab-pane active">
+    <h5>Information</h5>
+    <table>
+        <tbody>
+            <tr>
+                <th style="width: 25%">Method</th>
+                <td>{{ request.method }}</td>
+            </tr>
+            <tr>
+                <th>Protocol</th>
+                <td>{{ request.scheme }}</td>
+            </tr>
+            <tr>
+                <th>Host</th>
+                <td>{{ request.host }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ request.path|default('-') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h5>Headers</h5>
+    <table>
+        <tbody>
+        {% for header,value in request.headers %}
+            <tr>
+                <th style="width: 25%">{{ header }}</th>
+                <td>{{ value|join('<strong>, </strong>') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if request.query %}
+    <h5>Query Parameters</h5>
+    <table>
+        <tbody>
+        {% for name,parameter in request.query %}
+            <tr>
+                <th style="width: 25%">{{ name }}</th>
+                <td>
+                    {% if parameter is iterable %}
+                        {{ _self.display_array_recursive(parameter) }}
+                    {% else %}
+                        {{ parameter }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>

@@ -1,0 +1,32 @@
+<div id="response_{{ index }}" class="tab-pane">
+    <h5>Information</h5>
+    <table>
+        <tbody>
+            <tr>
+                <th style="width: 25%">Code</th>
+                <td>{{ response.status }}</td>
+            </tr>
+            <tr>
+                <th style="width: 25%">Status</th>
+                <td>{{ response.status_text }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h5>Headers</h5>
+    <table>
+        <tbody>
+        {% for header,value in response.headers %}
+            <tr>
+                <th style="width: 25%">{{ header }}</th>
+                <td>
+                    {{ value|join(', ') }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h5>Content</h5>
+    <pre>{{ response.body|replace({"\t\t\n": "", "\t": "  "}) }}</pre>
+</div>
