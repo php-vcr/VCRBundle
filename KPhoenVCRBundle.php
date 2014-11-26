@@ -2,6 +2,7 @@
 
 namespace KPhoen\VCRBundle;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use KPhoen\VCRBundle\VCR\VCRFactory;
@@ -13,7 +14,8 @@ class KPhoenVCRBundle extends Bundle
         $cassettePath = $this->container->getParameter('kphoen.vcr.cassette_path');
 
         if (!is_dir($cassettePath)) {
-            mkdir($cassettePath);
+            $fs = new Filesystem();
+            $fs->mkdir($cassettePath);
         }
 
         $recorder = $this->container->get('kphoen.vcr.recorder');
