@@ -65,4 +65,9 @@
         </tbody>
     </table>
     {% endif %}
+
+    {% if request.body is defined %}
+        <h5>Content</h5>
+        <pre>{{ request.body|replace({"\t\t\n": "", "\t": "  "}) }}</pre>
+    {% endif %}
 </div>
