@@ -53,7 +53,7 @@ div.vcr_logs div.request.post div.summary {
     color: #10A54A;
 }
 
-div.vcr_logs div.request.get div.summary {
+div.vcr_logs div.request.head div.summary, div.vcr_logs div.request.get div.summary {
     background-color: #E7F0F7;
     border-color: #C3D9EC;
     color: #0F6AB4;
@@ -109,7 +109,7 @@ div.vcr_logs div.request.post div.summary h3 > span.method {
     background-color: #10a54a;
 }
 
-div.vcr_logs div.request.get div.summary h3 > span.method {
+div.vcr_logs div.request.head div.summary h3 > span.method, div.vcr_logs div.request.get div.summary h3 > span.method {
     background-color: #0F6AB4;
 }
 
