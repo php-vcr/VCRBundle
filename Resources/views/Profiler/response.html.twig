@@ -27,6 +27,8 @@
         </tbody>
     </table>
 
-    <h5>Content</h5>
-    <pre>{{ response.body|replace({"\t\t\n": "", "\t": "  "}) }}</pre>
+    {% if response.body is defined %}
+        <h5>Content</h5>
+        <pre>{{ response.body|replace({"\t\t\n": "", "\t": "  "}) }}</pre>
+    {% endif %}
 </div>
