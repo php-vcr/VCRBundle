@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('path')->defaultValue('%kernel.cache_dir%/vcr')->end()
-                        ->scalarNode('format')->defaultValue('json')->end()
+                        ->scalarNode('format')->defaultValue('blackhole')->end()
                         ->scalarNode('name')->defaultValue('vcr')->end()
                     ->end()
                 ->end()
