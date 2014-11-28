@@ -17,7 +17,7 @@ class VCRVCRExtension extends Extension
         $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
         $container->setParameter('vcr.cassette.path', $config['cassette']['path']);
-        $container->setParameter('vcr.cassette.format', $config['cassette']['format']);
+        $container->setParameter('vcr.cassette.type', $config['cassette']['type']);
         $container->setParameter('vcr.cassette.name', $config['cassette']['name']);
     }
 

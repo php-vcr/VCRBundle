@@ -33,8 +33,8 @@ public function registerBundles()
 ```yaml
 vcrvcr:
     cassette:
+        type:   json
         path:   '%kernel.cache_dir%/vcr'
-        format: json
         name:   vcr
 ```
 

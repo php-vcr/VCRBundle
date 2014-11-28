@@ -9,7 +9,7 @@ services:
         class: VCR\Configuration
         calls:
             - [ setCassettePath, [ %vcr.cassette.path% ] ]
-            - [ setStorage, [ %vcr.cassette.format% ] ]
+            - [ setStorage, [ %vcr.cassette.type% ] ]
 
     vcr.http_client:
         class: VCR\Util\HttpClient
