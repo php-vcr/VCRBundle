@@ -1,0 +1,12 @@
+services:
+    vcr.listener.http_request:
+        class:     VCR\VCRBundle\EventListener\HttpRequestListener
+        arguments: [ @vcr.logger ]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    vcr.listener.playback:
+        class:     VCR\VCRBundle\EventListener\PlaybackListener
+        arguments: [ @vcr.logger ]
+        tags:
+            - { name: kernel.event_subscriber }

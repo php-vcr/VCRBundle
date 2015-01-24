@@ -6,31 +6,50 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
-use VCR\VCRBundle\VCR\LoggedVideoRecorder;
+use VCR\VCRBundle\VCR\Logger;
 
 class VCRDataCollector extends DataCollector
 {
-    private $recorder;
+    private $logger;
 
-    public function __construct(LoggedVideoRecorder $recorder)
+    public function __construct(Logger $logger)
     {
-        $this->recorder = $recorder;
+        $this->logger = $logger;
     }
 
     public function collect(Request $request, Response $response, \Exception $exception = null)
     {
+        $requests  = $this->logger->getHttpRequests();
+        $playbacks = $this->logger->getPlaybacks();
+
         $this->data = array(
-            'logs'  => $logs = $this->recorder->getLog(),
-            'count' => count($logs),
+            'requests'   => $requests,
+            'playbacks'  => $playbacks,
+            'count'      => count($requests) + count($playbacks),
         );
     }
 
     public function getRequestsLogs()
     {
-        return $this->data['logs'];
+        return $this->data['requests'];
+    }
+
+    public function getPlaybacks()
+    {
+        return $this->data['playbacks'];
+    }
+
+    public function getPlaybacksCount()
+    {
+        return count($this->data['playbacks']);
     }
 
     public function getRequestsCount()
+    {
+        return count($this->data['requests']);
+    }
+
+    public function getCount()
     {
         return $this->data['count'];
     }

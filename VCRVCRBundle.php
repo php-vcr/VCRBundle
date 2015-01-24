@@ -17,5 +17,7 @@ class VCRVCRBundle extends Bundle
             $fs = new Filesystem();
             $fs->mkdir($cassettePath);
         }
+
+        $this->container->get('vcr.recorder');
     }
 }

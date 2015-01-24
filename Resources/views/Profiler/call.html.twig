@@ -1,5 +1,5 @@
 <div id="log_{{ index }}" class="request {{ log.request.method|lower }}">
-    <div class="status icon {% if log.response.status != 200 %}error{% else %}success{% endif %}"></div>
+    <div class="status icon {% if log.response.status.code != 200 %}error{% else %}success{% endif %}"></div>
 
     <div class="summary">
         <h3>
@@ -7,7 +7,7 @@
             <span class="path">&nbsp{{ log.request.url }}</span>
         </h3>
         <div class="code">
-            <abbr title="{{ log.response.status_text }}">{{ log.response.status }}</abbr>
+            <abbr title="{{ log.response.status.message }}">{{ log.response.status.code }}</abbr>
         </div>
     </div>
 

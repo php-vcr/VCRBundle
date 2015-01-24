@@ -12,6 +12,7 @@ class VCRVCRExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('listeners.yml');
         $loader->load('services.yml');
 
         $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
@@ -27,7 +28,6 @@ class VCRVCRExtension extends Extension
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
         return new Configuration();
-
     }
 
     public function getAlias()

@@ -4,11 +4,11 @@
         <tbody>
             <tr>
                 <th style="width: 25%">Code</th>
-                <td>{{ response.status }}</td>
+                <td>{{ response.status.code }}</td>
             </tr>
             <tr>
                 <th style="width: 25%">Status</th>
-                <td>{{ response.status_text }}</td>
+                <td>{{ response.status.message }}</td>
             </tr>
         </tbody>
     </table>
@@ -27,7 +27,7 @@
         </tbody>
     </table>
 
-    {% if response.body is defined %}
+    {% if request.body is defined %}
         <h5>Content</h5>
         <pre>{{ response.body|replace({"\t\t\n": "", "\t": "  "}) }}</pre>
     {% endif %}

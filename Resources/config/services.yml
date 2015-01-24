@@ -1,9 +1,12 @@
 services:
     data_collector.vcr:
         class:      VCR\VCRBundle\DataCollector\VCRDataCollector
-        arguments:  [ @vcr.recorder ]
+        arguments:  [ @vcr.logger ]
         tags:
             - { name: data_collector, template: "VCRVCRBundle:Profiler:collector", id: "vcr_collector" }
+
+    vcr.logger:
+        class:  VCR\VCRBundle\VCR\Logger
 
     vcr.config:
         class: VCR\Configuration
@@ -21,8 +24,9 @@ services:
         arguments:      [ @vcr.config ]
 
     vcr.recorder:
-        class:      VCR\VCRBundle\VCR\LoggedVideoRecorder
+        class:      VCR\Videorecorder
         arguments:  [ @vcr.config, @vcr.http_client, @vcr.factory ]
         calls:
+            - [ setEventDispatcher, [ @event_dispatcher ] ]
             - [ turnOn, [ ] ]
             - [ insertCassette, [ %vcr.cassette.name% ] ]
