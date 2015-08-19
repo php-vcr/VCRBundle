@@ -29,6 +29,14 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode
             ->children()
+                ->arrayNode('library_hooks')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('stream_wrapper')->defaultValue(false)->end()
+                        ->booleanNode('curl')->defaultValue(false)->end()
+                        ->booleanNode('soap')->defaultValue(false)->end()
+                    ->end()
+                ->end()
                 ->arrayNode('cassette')
                     ->addDefaultsIfNotSet()
                     ->children()
