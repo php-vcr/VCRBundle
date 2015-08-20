@@ -11,6 +11,7 @@ services:
     vcr.config:
         class: VCR\Configuration
         calls:
+            - [ enableRequestMatchers, [ %vcr.request_matchers% ] ]
             - [ setCassettePath, [ %vcr.cassette.path% ] ]
             - [ setStorage, [ %vcr.cassette.type% ] ]
 
