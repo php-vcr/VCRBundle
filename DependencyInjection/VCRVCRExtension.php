@@ -20,6 +20,9 @@ class VCRVCRExtension extends Extension
         $enabled_library_hooks = array_keys(array_filter($config['library_hooks']));
         $container->setParameter('vcr.library_hooks', $enabled_library_hooks);
 
+        $enabled_request_matchers = array_keys(array_filter($config['request_matchers']));
+        $container->setParameter('vcr.request_matchers', $enabled_request_matchers);
+
         $container->setParameter('vcr.cassette.path', $config['cassette']['path']);
         $container->setParameter('vcr.cassette.type', $config['cassette']['type']);
         $container->setParameter('vcr.cassette.name', $config['cassette']['name']);

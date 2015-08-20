@@ -12,6 +12,7 @@ services:
         class: VCR\Configuration
         calls:
             - [ enableLibraryHooks, [ %vcr.library_hooks% ]]
+            - [ enableRequestMatchers, [ %vcr.request_matchers% ] ]
             - [ setCassettePath, [ %vcr.cassette.path% ] ]
             - [ setStorage, [ %vcr.cassette.type% ] ]
 
