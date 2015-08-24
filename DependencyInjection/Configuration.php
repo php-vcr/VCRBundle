@@ -29,6 +29,18 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode
             ->children()
+                ->arrayNode('request_matchers')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('method')->defaultValue(true)->end()
+                        ->booleanNode('url')->defaultValue(true)->end()
+                        ->booleanNode('query_string')->defaultValue(true)->end()
+                        ->booleanNode('host')->defaultValue(true)->end()
+                        ->booleanNode('headers')->defaultValue(true)->end()
+                        ->booleanNode('body')->defaultValue(true)->end()
+                        ->booleanNode('post_fields')->defaultValue(true)->end()
+                    ->end()
+                ->end()
                 ->arrayNode('cassette')
                     ->addDefaultsIfNotSet()
                     ->children()
