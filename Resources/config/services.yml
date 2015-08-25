@@ -11,6 +11,7 @@ services:
     vcr.config:
         class: VCR\Configuration
         calls:
+            - [ enableLibraryHooks, [ %vcr.library_hooks% ]]
             - [ setCassettePath, [ %vcr.cassette.path% ] ]
             - [ setStorage, [ %vcr.cassette.type% ] ]
 
