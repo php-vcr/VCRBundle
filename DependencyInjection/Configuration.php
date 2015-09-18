@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
     {
         $rootNode
             ->children()
+                ->booleanNode('enabled')->defaultTrue()->end()
                 ->arrayNode('library_hooks')
                     ->addDefaultsIfNotSet()
                     ->children()

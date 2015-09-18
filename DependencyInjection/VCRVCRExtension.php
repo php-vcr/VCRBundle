@@ -23,6 +23,7 @@ class VCRVCRExtension extends Extension
         $enabled_request_matchers = array_keys(array_filter($config['request_matchers']));
         $container->setParameter('vcr.request_matchers', $enabled_request_matchers);
 
+        $container->setParameter('vcr.enabled', $config['enabled']);
         $container->setParameter('vcr.cassette.path', $config['cassette']['path']);
         $container->setParameter('vcr.cassette.type', $config['cassette']['type']);
         $container->setParameter('vcr.cassette.name', $config['cassette']['name']);
