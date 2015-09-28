@@ -11,13 +11,19 @@ class VCRVCRBundle extends Bundle
 {
     public function boot()
     {
-        $cassettePath = $this->container->getParameter('vcr.cassette.path');
+        $container = $this->container;
+        $cassettePath = $container->getParameter('vcr.cassette.path');
 
         if (!is_dir($cassettePath)) {
             $fs = new Filesystem();
             $fs->mkdir($cassettePath);
         }
 
-        $this->container->get('vcr.recorder');
+        if ($container->getParameter('vcr.enabled')) {
+            $recorder = $container->get('vcr.recorder');
+            $recorder->turnOn();
+            $cassetteName = $container->getParameter('vcr.cassette.name');
+            $recorder->insertCassette($cassetteName);
+        }
     }
 }

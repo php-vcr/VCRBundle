@@ -30,5 +30,3 @@ services:
         arguments:  [ @vcr.config, @vcr.http_client, @vcr.factory ]
         calls:
             - [ setEventDispatcher, [ @event_dispatcher ] ]
-            - [ turnOn, [ ] ]
-            - [ insertCassette, [ %vcr.cassette.name% ] ]
