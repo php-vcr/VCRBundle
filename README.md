@@ -32,10 +32,23 @@ public function registerBundles()
 
 ```yaml
 vcrvcr:
+    enabled: true
+    library_hooks:
+        stream_wrapper: false
+        curl: false
+        soap: false
+    request_matchers:
+        method: true
+        url: true
+        query_string: true
+        host: true
+        headers: true
+        body: true
+        post_fields: true
     cassette:
-        type:   json
-        path:   '%kernel.cache_dir%/vcr'
-        name:   vcr
+        type: json
+        path: '%kernel.cache_dir%/vcr'
+        name: vcr
 ```
 
 ## Credits
