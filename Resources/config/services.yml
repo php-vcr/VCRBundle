@@ -1,7 +1,7 @@
 services:
     data_collector.vcr:
         class:      VCR\VCRBundle\DataCollector\VCRDataCollector
-        arguments:  [ @vcr.logger ]
+        arguments:  [ '@vcr.logger' ]
         tags:
             - { name: data_collector, template: "VCRVCRBundle:Profiler:collector", id: "vcr_collector" }
 
@@ -21,12 +21,11 @@ services:
 
     vcr.factory:
         class:          VCR\VCRFactory
-        factory_class:  VCR\VCRFactory
-        factory_method: getInstance
-        arguments:      [ @vcr.config ]
+        factory: [VCR\VCRFactory, getInstance]
+        arguments:      [ '@vcr.config' ]
 
     vcr.recorder:
         class:      VCR\Videorecorder
-        arguments:  [ @vcr.config, @vcr.http_client, @vcr.factory ]
+        arguments:  [ '@vcr.config', '@vcr.http_client', '@vcr.factory' ]
         calls:
-            - [ setEventDispatcher, [ @event_dispatcher ] ]
+            - [ setEventDispatcher, [ '@event_dispatcher' ] ]
