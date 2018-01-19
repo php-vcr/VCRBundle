@@ -11,10 +11,10 @@ services:
     vcr.config:
         class: VCR\Configuration
         calls:
-            - [ enableLibraryHooks, [ %vcr.library_hooks% ]]
-            - [ enableRequestMatchers, [ %vcr.request_matchers% ] ]
-            - [ setCassettePath, [ %vcr.cassette.path% ] ]
-            - [ setStorage, [ %vcr.cassette.type% ] ]
+            - [ enableLibraryHooks, [ "%vcr.library_hooks%" ]]
+            - [ enableRequestMatchers, [ "%vcr.request_matchers%" ] ]
+            - [ setCassettePath, [ "%vcr.cassette.path%" ] ]
+            - [ setStorage, [ "%vcr.cassette.type%" ] ]
 
     vcr.http_client:
         class: VCR\Util\HttpClient
@@ -29,3 +29,4 @@ services:
         arguments:  [ '@vcr.config', '@vcr.http_client', '@vcr.factory' ]
         calls:
             - [ setEventDispatcher, [ '@event_dispatcher' ] ]
+        public: true
