@@ -58,4 +58,11 @@ class VCRDataCollector extends DataCollector
     {
         return 'vcr_collector';
     }
+
+    public function reset()
+    {
+        $this->data['requests'] = [];
+        $this->data['playbacks'] = [];
+        $this->data['count'] = 0;
+    }
 }
