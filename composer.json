@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "~2.6||~3.0||~4.0",
-        "php-vcr/php-vcr": "~1.2"
+        "symfony/framework-bundle": "~3.0||~4.0||~5.0",
+        "php-vcr/php-vcr": "^1.5"
     },
     "autoload": {
         "psr-4": {
