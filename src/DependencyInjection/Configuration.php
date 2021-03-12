@@ -17,8 +17,8 @@ class Configuration implements ConfigurationInterface
 
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root(VCRVCRExtension::ALIAS);
+        $treeBuilder = new TreeBuilder('vcrvcr');
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->addCassetteNode($rootNode);
 
