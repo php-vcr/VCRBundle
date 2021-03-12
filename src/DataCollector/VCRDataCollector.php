@@ -5,7 +5,6 @@ namespace VCR\VCRBundle\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
-
 use VCR\VCRBundle\VCR\Logger;
 
 class VCRDataCollector extends DataCollector
@@ -17,7 +16,7 @@ class VCRDataCollector extends DataCollector
         $this->logger = $logger;
     }
 
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
         $requests  = $this->logger->getHttpRequests();
         $playbacks = $this->logger->getPlaybacks();
