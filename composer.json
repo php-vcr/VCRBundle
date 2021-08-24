@@ -10,8 +10,13 @@
         }
     ],
     "require": {
-        "symfony/framework-bundle": "~3.0||~4.0||~5.0",
-        "php-vcr/php-vcr": "^1.5"
+        "php-vcr/php-vcr": "^1.2",
+        "symfony/config": "^2.6|^3|^4",
+        "symfony/dependency-injection": "^2.6|^3|^4",
+        "symfony/event-dispatcher": "^2.6|^3|^4",
+        "symfony/http-foundation": "^2.6|^3|^4",
+        "symfony/http-kernel": "^2.6|^3|^4",
+        "symfony/yaml": "^2.6|^3|^4"
     },
     "autoload": {
         "psr-4": {
