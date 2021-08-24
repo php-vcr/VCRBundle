@@ -14,17 +14,18 @@ Install the behavior adding `php-vcr/vcr-bundle` to your composer.json or
 from CLI:
 
 ```bash
-composer require php-vcr/vcr-bundle
+php composer.phar require php-vcr/vcr-bundle
 ```
 
-And declare the bundle in your `config/bundles.php` file:
+And declare the bundle in your `app/AppKernel.php` file:
 
 ```php
-return [
-    // ...
-    VCR\VCRBundle\VCRVCRBundle::class => ['test' => true],
-];
-
+public function registerBundles()
+{
+    if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        $bundles[] = new VCR\VCRBundle\VCRVCRBundle();
+    }
+}
 ```
 
 ## Configuration reference
