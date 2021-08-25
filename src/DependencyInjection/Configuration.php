@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace VCR\VCRBundle\DependencyInjection;
 
@@ -8,24 +9,17 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    protected $factories = array();
-
-    public function __construct(array $factories = array())
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $this->factories = $factories;
-    }
-
-    public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('vcrvcr');
+        $treeBuilder = new TreeBuilder(VCRExtension::ALIAS);
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->addCassetteNode($rootNode);
 
         return $treeBuilder;
     }
 
-    protected function addCassetteNode(ArrayNodeDefinition $rootNode)
+    protected function addCassetteNode(ArrayNodeDefinition $rootNode): ArrayNodeDefinition
     {
         $rootNode
             ->children()

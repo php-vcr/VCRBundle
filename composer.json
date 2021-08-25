@@ -10,18 +10,31 @@
         }
     ],
     "require": {
-        "php-vcr/php-vcr": "^1.2",
-        "symfony/config": "^2.6|^3|^4",
-        "symfony/dependency-injection": "^2.6|^3|^4",
-        "symfony/filesystem": "^2.6|^3|^4",
-        "symfony/event-dispatcher": "^2.6|^3|^4",
-        "symfony/http-foundation": "^2.6|^3|^4",
-        "symfony/http-kernel": "^2.6|^3|^4",
-        "symfony/yaml": "^2.6|^3|^4"
+        "php": "^7.2",
+        "php-vcr/php-vcr": "^1.5",
+        "symfony/config": "^4|^5",
+        "symfony/dependency-injection": "^4|^5",
+        "symfony/filesystem": "^4|^5",
+        "symfony/event-dispatcher": "^4|^5",
+        "symfony/http-foundation": "^4|^5",
+        "symfony/http-kernel": "^4.4|^5",
+        "symfony/yaml": "^4|^5"
+    },
+    "require-dev": {
+        "neutron/temporary-filesystem": "^2.3",
+        "phpunit/phpunit": "^7.5",
+        "symfony/framework-bundle": "^4.4|^5.3",
+        "symfony/phpunit-bridge": "^5.2|^6"
     },
     "autoload": {
         "psr-4": {
             "VCR\\VCRBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VCR\\VCRBundle\\Tests\\Functional\\App\\": "tests/Functional/app",
+            "VCR\\VCRBundle\\Tests\\": "tests/"
         }
     }
 }

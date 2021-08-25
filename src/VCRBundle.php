@@ -1,13 +1,14 @@
 <?php
+declare(strict_types = 1);
 
 namespace VCR\VCRBundle;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class VCRVCRBundle extends Bundle
+class VCRBundle extends Bundle
 {
-    public function boot()
+    public function boot(): void
     {
         $cassettePath = $this->container->getParameter('vcr.cassette.path');
 

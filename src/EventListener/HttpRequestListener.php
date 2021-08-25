@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace VCR\VCRBundle\EventListener;
 
@@ -20,14 +21,14 @@ class HttpRequestListener implements EventSubscriberInterface
     /**
      * {@inheritDoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return array(
             VCREvents::VCR_AFTER_HTTP_REQUEST => 'onHttpRequest',
         );
     }
 
-    public function onHttpRequest(AfterHttpRequestEvent $event)
+    public function onHttpRequest(AfterHttpRequestEvent $event): void
     {
         $this->logger->logHttpRequest(
             $event->getRequest(),

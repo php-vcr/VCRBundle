@@ -22,7 +22,7 @@ And declare the bundle in your `config/bundles.php` file:
 ```php
 return [
     // ...
-    VCR\VCRBundle\VCRVCRBundle::class => ['test' => true],
+    VCR\VCRBundle\VCRBundle::class => ['test' => true],
 ];
 
 ```
@@ -30,7 +30,7 @@ return [
 ## Configuration reference
 
 ```yaml
-vcrvcr:
+vcr:
     enabled: true
     library_hooks:
         stream_wrapper: false

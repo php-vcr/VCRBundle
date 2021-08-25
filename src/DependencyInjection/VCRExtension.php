@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace VCR\VCRBundle\DependencyInjection;
 
@@ -7,9 +8,11 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class VCRVCRExtension extends Extension
+class VCRExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
+    const ALIAS = 'vcr';
+
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('listeners.yml');
@@ -32,13 +35,13 @@ class VCRVCRExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container): Configuration
     {
         return new Configuration();
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
-        return 'vcrvcr';
+        return static::ALIAS;
     }
 }
