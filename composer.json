@@ -21,7 +21,9 @@
         "symfony/yaml": "^4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5|^7.5"
+        "neutron/temporary-filesystem": "^2.3",
+        "phpunit/phpunit": "^7.5",
+        "symfony/framework-bundle": "^4.4"
     },
     "autoload": {
         "psr-4": {
@@ -30,6 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "VCR\\VCRBundle\\Tests\\Functional\\App\\": "tests/Functional/app",
             "VCR\\VCRBundle\\Tests\\": "tests/"
         }
     }
