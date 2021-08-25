@@ -43,13 +43,11 @@ jobs:
                 with:
                     fetch-depth: 2
 
-            -   name: "Install PHP with PCOV"
+            -   name: "Install PHP"
                 uses: "shivammathur/setup-php@v2"
                 if: "${{ matrix.php-version != '7.1' }}"
                 with:
                     php-version: "${{ matrix.php-version }}"
-                    coverage: "pcov"
-                    ini-values: "zend.assertions=1"
 
             -   name: "Globally install symfony/flex"
                 run: "composer global require --no-progress --no-scripts --no-plugins symfony/flex"
@@ -65,33 +63,10 @@ jobs:
                     composer-options: "--prefer-dist"
 
             -   name: "Run PHPUnit"
-                run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
+                run: "vendor/bin/phpunit --log-junit phpunit.xml"
 
-            -   name: "Upload coverage file"
-                uses: "actions/upload-artifact@v2"
+            -   name: "Publish Test Report"
+                uses: "mikepenz/action-junit-report@v2"
+                if: "always()" # always run even if the previous step fails
                 with:
-                    name: "phpunit-${{ matrix.php-version }}-${{ matrix.dependencies }}-${{ hashFiles('composer.lock') }}.coverage"
-                    path: "coverage.xml"
-
-    upload_coverage:
-        name: "Upload coverage to Codecov"
-        runs-on: "ubuntu-20.04"
-        needs:
-            - "phpunit"
-
-        steps:
-            -   name: "Checkout"
-                uses: "actions/checkout@v2"
-                with:
-                    fetch-depth: 2
-
-            -   name: "Download coverage files"
-                uses: "actions/download-artifact@v2"
-                with:
-                    path: "reports"
-
-            -   name: "Upload to Codecov"
-                uses: "codecov/codecov-action@v1"
-                with:
-                    directory: reports
-
+                    report_paths: "phpunit.xml"
