@@ -8,16 +8,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
-    protected $factories = [array()];
-
-    public function __construct(array $factories = [])
-    {
-        $this->factories = $factories;
-    }
-
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('vcrvcr');
+        $treeBuilder = new TreeBuilder(VCRVCRExtension::ALIAS);
         $rootNode = $treeBuilder->getRootNode();
 
         $this->addCassetteNode($rootNode);
