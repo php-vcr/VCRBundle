@@ -36,7 +36,7 @@
     <h2>Intercepted Requests</h2>
 
     {% if collector.requestsLogs %}
-        {% include 'VCRVCRBundle:Profiler:calls.html.twig' with {'logs': collector.requestsLogs } %}
+        {% include 'VCRBundle:Profiler:calls.html.twig' with {'logs': collector.requestsLogs } %}
     {% else %}
         <p>No request intercepted.</p>
     {% endif %}
@@ -44,7 +44,7 @@
     <h2>Replays</h2>
 
     {% if collector.playbacks %}
-        {% include 'VCRVCRBundle:Profiler:calls.html.twig' with {'logs': collector.playbacks } %}
+        {% include 'VCRBundle:Profiler:calls.html.twig' with {'logs': collector.playbacks } %}
     {% else %}
         <p>No request replayed.</p>
     {% endif %}

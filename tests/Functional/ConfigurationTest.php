@@ -5,7 +5,7 @@ namespace VCR\VCRBundle\Tests\Functional;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use VCR\VCRBundle\DependencyInjection\VCRVCRExtension;
+use VCR\VCRBundle\DependencyInjection\VCRExtension;
 
 class ConfigurationTest extends WebTestCase
 {
@@ -115,7 +115,7 @@ class ConfigurationTest extends WebTestCase
                 $this->getAdditionalConfigurationLoaderCallable($additionalConfig),
             ],
         ];
-        $config = $this->getContainerConfiguration(VCRVCRExtension::ALIAS, $kernelOptions);
+        $config = $this->getContainerConfiguration(VCRExtension::ALIAS, $kernelOptions);
 
         static::assertArraySubset($expectedConfig, $config);
     }

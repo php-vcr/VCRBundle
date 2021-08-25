@@ -7,7 +7,7 @@ use Neutron\TemporaryFilesystem\TemporaryFilesystemInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
-use VCR\VCRBundle\VCRVCRBundle;
+use VCR\VCRBundle\VCRBundle;
 
 class Kernel extends BaseKernel
 {
@@ -43,7 +43,7 @@ class Kernel extends BaseKernel
 
         return [
             new FrameworkBundle(),
-            new VCRVCRBundle(),
+            new VCRBundle(),
         ];
     }
 

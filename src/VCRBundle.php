@@ -6,7 +6,7 @@ namespace VCR\VCRBundle;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class VCRVCRBundle extends Bundle
+class VCRBundle extends Bundle
 {
     public function boot(): void
     {

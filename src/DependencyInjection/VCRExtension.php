@@ -8,9 +8,9 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
-class VCRVCRExtension extends Extension
+class VCRExtension extends Extension
 {
-    const ALIAS = 'vcrvcr';
+    const ALIAS = 'vcr';
 
     public function load(array $configs, ContainerBuilder $container): void
     {

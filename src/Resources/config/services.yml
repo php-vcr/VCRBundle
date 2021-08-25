@@ -3,7 +3,7 @@ services:
         class:      VCR\VCRBundle\DataCollector\VCRDataCollector
         arguments:  [ '@vcr.logger' ]
         tags:
-            - { name: data_collector, template: "VCRVCRBundle:Profiler:collector", id: "vcr_collector" }
+            - { name: data_collector, template: "VCRBundle:Profiler:collector", id: "vcr_collector" }
 
     vcr.logger:
         class:  VCR\VCRBundle\VCR\Logger
