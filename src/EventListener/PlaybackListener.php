@@ -20,14 +20,14 @@ class PlaybackListener implements EventSubscriberInterface
     /**
      * {@inheritDoc}
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return array(
             VCREvents::VCR_AFTER_PLAYBACK => 'onPlayback',
         );
     }
 
-    public function onPlayback(AfterPlaybackEvent $event)
+    public function onPlayback(AfterPlaybackEvent $event): void
     {
         $this->logger->logPlayback(
             $event->getRequest(),

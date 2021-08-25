@@ -7,7 +7,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class VCRVCRBundle extends Bundle
 {
-    public function boot()
+    public function boot(): void
     {
         $cassettePath = $this->container->getParameter('vcr.cassette.path');
 

@@ -9,7 +9,9 @@ use Symfony\Component\Config\FileLocator;
 
 class VCRVCRExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container)
+    const ALIAS = 'vcrvcr';
+
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('listeners.yml');
@@ -32,13 +34,13 @@ class VCRVCRExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container): Configuration
     {
         return new Configuration();
     }
 
-    public function getAlias()
+    public function getAlias(): string
     {
-        return 'vcrvcr';
+        return static::ALIAS;
     }
 }

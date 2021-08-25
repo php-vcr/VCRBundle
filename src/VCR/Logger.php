@@ -8,45 +8,45 @@ use VCR\Response;
 
 class Logger
 {
-    private $http_requests = array();
-    private $playbacks     = array();
+    private $http_requests = [];
+    private $playbacks = [];
 
-    public function logHttpRequest(Request $request, Response $response)
+    public function logHttpRequest(Request $request, Response $response): void
     {
-        $this->http_requests[] = array(
-            'request'  => $this->augmentRequest($request->toArray()),
+        $this->http_requests[] = [
+            'request' => $this->augmentRequest($request->toArray()),
             'response' => $response->toArray(),
-        );
+        ];
     }
 
-    public function logPlayback(Request $request, Response $response, Cassette $cassette)
+    public function logPlayback(Request $request, Response $response, Cassette $cassette): void
     {
-        $this->playbacks[] = array(
-            'request'  => $this->augmentRequest($request->toArray()),
+        $this->playbacks[] = [
+            'request' => $this->augmentRequest($request->toArray()),
             'response' => $response->toArray(),
             'cassette' => $cassette,
-        );
+        ];
     }
 
-    public function getHttpRequests()
+    public function getHttpRequests(): array
     {
         return $this->http_requests;
     }
 
-    public function getPlaybacks()
+    public function getPlaybacks(): array
     {
         return $this->playbacks;
     }
 
-    private function augmentRequest(array $request)
+    private function augmentRequest(array $request): array
     {
         $url_info = parse_url($request['url']);
-        $query_string = array();
-        parse_str(!empty($url_info['query']) ? $url_info['query'] : '', $query_string);
+        $query_string = [];
+        parse_str(! empty($url_info['query']) ? $url_info['query'] : '', $query_string);
 
         return array_merge(
             $url_info,
-            array('query' => $query_string),
+            ['query' => $query_string],
             $request
         );
     }
