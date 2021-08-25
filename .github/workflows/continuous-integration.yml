@@ -27,6 +27,7 @@ jobs:
                     - "stable"
                 symfony-require:
                     - "4.4.*"
+                    - "5.3.*"
                 symfony-deprecations-helper:
                     - ""
                 include:
@@ -34,12 +35,6 @@ jobs:
                     -   dependencies: "lowest"
                         stability: "stable"
                         php-version: "7.2"
-                        symfony-deprecations-helper: "weak"
-
-                    # Test against latest Symfony 5.2 dev
-                    -   symfony-require: "5.3.*"
-                        dependencies: "highest"
-                        php-version: "7.3"
                         symfony-deprecations-helper: "weak"
 
         steps:
