@@ -21,6 +21,9 @@ jobs:
                     - "7.2"
                     - "7.3"
                     - "7.4"
+                    - "8.0"
+                    - "8.1"
+                    - "8.2"
                 dependencies:
                     - "highest"
                 stability:
@@ -29,14 +32,12 @@ jobs:
                     - "4.4.*"
                     - "5.4.*"
                 symfony-deprecations-helper:
-                    - ""
+                    - "weak"
                 include:
                     # Tests the lowest set of dependencies
                     -   dependencies: "lowest"
                         stability: "stable"
                         php-version: "7.2"
-                        symfony-deprecations-helper: "weak"
-
         steps:
             -   name: "Checkout"
                 uses: "actions/checkout@v2"
