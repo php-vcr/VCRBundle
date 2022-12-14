@@ -4,9 +4,6 @@
         <testsuite name="php-vcr/vcr-bundle Functional Tests">
             <directory>tests/Functional/</directory>
         </testsuite>
-        <testsuite name="php-vcr/vcr-bundle Unit Tests">
-            <directory>tests/Unit/</directory>
-        </testsuite>
     </testsuites>
 
     <php>
