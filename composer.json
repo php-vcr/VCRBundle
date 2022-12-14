@@ -37,5 +37,10 @@
             "VCR\\VCRBundle\\Tests\\Functional\\App\\": "tests/Functional/app",
             "VCR\\VCRBundle\\Tests\\": "tests/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev"
+        }
     }
 }
