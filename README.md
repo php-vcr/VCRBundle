@@ -122,6 +122,8 @@ vcr:
 * [Kévin Gomez](http://github.com/K-Phoen/)
 * [Ludovic Fleury](https://github.com/ludofleury) - to whom I borrowed the
   design of the web profiler part from his [GuzzleBundle](https://github.com/ludofleury/GuzzleBundle/).
+* [Simon Hübner](https://github.com/simonhard) - making the bundle SF 5.4 compatible
+* [Daniel Hürtgen](https://github.com/higidi) - making the bundle PHP 8 compatible and providing extra TestCase helper
 
 ## License
 
