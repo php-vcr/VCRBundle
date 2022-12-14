@@ -8,25 +8,33 @@ services:
     vcr.logger:
         class:  VCR\VCRBundle\VCR\Logger
 
+    vcr.factory:
+        class:          VCR\VCRFactory
+        factory:        [VCR\VCRFactory, getInstance]
+
     vcr.config:
-        class: VCR\Configuration
+        class:      VCR\Configuration
+        factory:    ['@vcr.factory', getOrCreate]
+        arguments:  [VCR\Configuration]
         calls:
             - [ enableLibraryHooks, [ "%vcr.library_hooks%" ]]
             - [ enableRequestMatchers, [ "%vcr.request_matchers%" ] ]
             - [ setCassettePath, [ "%vcr.cassette.path%" ] ]
             - [ setStorage, [ "%vcr.cassette.type%" ] ]
 
-    vcr.http_client:
-        class: VCR\Util\HttpClient
+    # passing '@vcr.config' as third parameter to getOrCreate ensures the VCR\Configuration class is
+    # created and configured by the symfony di as expected (because the configuration object is already
+    # created by the factory) #hack
 
-    vcr.factory:
-        class:          VCR\VCRFactory
-        factory: [VCR\VCRFactory, getInstance]
-        arguments:      [ '@vcr.config' ]
+    vcr.http_client:
+        class:      VCR\Util\HttpClient
+        factory:    ['@vcr.factory', getOrCreate]
+        arguments:  [VCR\Util\HttpClient, [], '@vcr.config']
 
     vcr.recorder:
         class:      VCR\Videorecorder
-        arguments:  [ '@vcr.config', '@vcr.http_client', '@vcr.factory' ]
+        factory:    ['@vcr.factory', getOrCreate]
+        arguments:  [ VCR\Videorecorder, [], '@vcr.config']
         calls:
             - [ setEventDispatcher, [ '@event_dispatcher' ] ]
         public: true
