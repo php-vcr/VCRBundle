@@ -2,6 +2,7 @@
 
 namespace VCR\VCRBundle\Tests\Functional;
 
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use Neutron\TemporaryFilesystem\Manager;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTest;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -11,6 +12,8 @@ use VCR\VCRBundle\Tests\Functional\App\Kernel;
 
 class WebTestCase extends BaseWebTest
 {
+    use ArraySubsetAsserts;
+
     protected static $temporaryDirectoryManager;
     protected static $configSubFolder;
 

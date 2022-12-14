@@ -21,8 +21,9 @@
         "symfony/yaml": "^4|^5"
     },
     "require-dev": {
+        "dms/phpunit-arraysubset-asserts": "^0.4",
         "neutron/temporary-filesystem": "^3",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^8.5|^9.5",
         "symfony/framework-bundle": "^4.4|^5.4",
         "symfony/phpunit-bridge": "^4.4|^5.4"
     },
