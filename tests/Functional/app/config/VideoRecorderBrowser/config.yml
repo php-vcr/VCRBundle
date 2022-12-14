@@ -1,0 +1,8 @@
+imports:
+    - { resource: '../Default/config.yml' }
+
+vcr:
+    library_hooks:
+        stream_wrapper: true
+    cassette:
+        type: yaml
