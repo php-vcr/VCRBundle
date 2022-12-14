@@ -23,8 +23,8 @@
     "require-dev": {
         "neutron/temporary-filesystem": "^2.3",
         "phpunit/phpunit": "^7.5",
-        "symfony/framework-bundle": "^4.4|^5.3",
-        "symfony/phpunit-bridge": "^5.2|^6"
+        "symfony/framework-bundle": "^4.4|^5.4",
+        "symfony/phpunit-bridge": "^4.4|^5.4"
     },
     "autoload": {
         "psr-4": {
