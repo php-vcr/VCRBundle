@@ -27,7 +27,7 @@ jobs:
                     - "stable"
                 symfony-require:
                     - "4.4.*"
-                    - "5.3.*"
+                    - "5.4.*"
                 symfony-deprecations-helper:
                     - ""
                 include:
@@ -48,9 +48,7 @@ jobs:
                 if: "${{ matrix.php-version != '7.1' }}"
                 with:
                     php-version: "${{ matrix.php-version }}"
-
-            -   name: "Globally install symfony/flex"
-                run: "composer global require --no-progress --no-scripts --no-plugins symfony/flex"
+                    tools: composer,flex
 
             -   name: "Enforce using stable dependencies"
                 run: "composer config minimum-stability stable"
