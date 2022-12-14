@@ -9,6 +9,9 @@
             "email": "contact@kevingomez.fr"
         }
     ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
         "php": "^7.2|^8",
         "php-vcr/php-vcr": "^1.5",
