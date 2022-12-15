@@ -38,6 +38,7 @@ jobs:
                     -   dependencies: "lowest"
                         stability: "stable"
                         php-version: "7.2"
+                        symfony-deprecations-helper: "weak"
         steps:
             -   name: "Checkout"
                 uses: "actions/checkout@v2"
