@@ -7,6 +7,14 @@
         {
             "name": "Kévin Gomez",
             "email": "contact@kevingomez.fr"
+        },
+        {
+            "name": "Daniel Hürtgen",
+            "email": "daniel@higidi.de"
+        },
+        {
+            "name": "Simon Hübner",
+            "email": "huebner.simon@gmail.com"
         }
     ],
     "config": {
@@ -16,18 +24,20 @@
         "php": "^7.2|^8",
         "php-vcr/php-vcr": "^1.5",
         "symfony/config": "^4|^5",
+        "symfony/browser-kit": "^4|^5",
         "symfony/dependency-injection": "^4|^5",
         "symfony/filesystem": "^4|^5",
         "symfony/event-dispatcher": "^4|^5",
+        "symfony/framework-bundle": "^4.4|^5.4",
         "symfony/http-foundation": "^4|^5",
         "symfony/http-kernel": "^4.4|^5",
+        "symfony/polyfill-php80": "^1.16",
         "symfony/yaml": "^4|^5"
     },
     "require-dev": {
         "dms/phpunit-arraysubset-asserts": "^0.4",
         "neutron/temporary-filesystem": "^3",
         "phpunit/phpunit": "^8.5|^9.5",
-        "symfony/framework-bundle": "^4.4|^5.4",
         "symfony/phpunit-bridge": "^4.4|^5.4"
     },
     "autoload": {

@@ -38,3 +38,7 @@ services:
         calls:
             - [ setEventDispatcher, [ '@event_dispatcher' ] ]
         public: true
+
+    test.client.vcr:
+        class: VCR\VCRBundle\VideoRecorderBrowser
+        parent: test.client
