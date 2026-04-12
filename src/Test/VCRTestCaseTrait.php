@@ -13,7 +13,8 @@ use VCR\Videorecorder;
  * Trait providing helper functions to work with \PHPUnit\Framework\TestCase in combination with
  * \Symfony\Bundle\FrameworkBundle\Test\WebTestCase and the php-vcr library (&bundle).
  *
- * @method ?string getName(bool $withDataSet)
+ * @method string name() PHPUnit 10+: returns the test method name
+ * @method ?string getName(bool $withDataSet) PHPUnit < 10: returns name, optionally with data set label
  * @property ?string $ignoredTestSuiteNamespacePrefix Set a namespace prefix which should be ignored while generating
  *     the cassette path
  */
@@ -78,7 +79,17 @@ trait VCRTestCaseTrait
      */
     protected function getVideoRecorderCassetteName(string $suffix = null, bool $withDataSet = true): string
     {
-        $name = $this->getName($withDataSet);
+        if (method_exists($this, 'getName')) {
+            // PHPUnit < 10
+            $name = $this->getName($withDataSet);
+        } else {
+            // PHPUnit 10+: getName() was removed; use name() + dataName()
+            $name = $this->name();
+            if ($withDataSet && method_exists($this, 'dataName') && '' !== (string) $this->dataName()) {
+                $name .= '-' . $this->dataName();
+            }
+        }
+
         if (! empty($suffix)) {
             $name .= $suffix;
         }
