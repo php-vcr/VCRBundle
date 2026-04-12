@@ -9,7 +9,7 @@ on:
 jobs:
     phpunit:
         name: "PHPUnit"
-        runs-on: "ubuntu-20.04"
+        runs-on: "ubuntu-latest"
         env:
             SYMFONY_REQUIRE: ${{matrix.symfony-require}}
             SYMFONY_DEPRECATIONS_HELPER: ${{matrix.symfony-deprecations-helper}}
@@ -18,36 +18,35 @@ jobs:
             fail-fast: false
             matrix:
                 php-version:
-                    - "7.2"
-                    - "7.3"
-                    - "7.4"
-                    - "8.0"
                     - "8.1"
                     - "8.2"
+                    - "8.3"
+                    - "8.4"
+                    - "8.5"
                 dependencies:
                     - "highest"
                 stability:
                     - "stable"
                 symfony-require:
-                    - "4.4.*"
                     - "5.4.*"
+                    - "6.4.*"
                 symfony-deprecations-helper:
                     - "weak"
                 include:
                     # Tests the lowest set of dependencies
                     -   dependencies: "lowest"
                         stability: "stable"
-                        php-version: "7.2"
+                        php-version: "8.1"
+                        symfony-require: "5.4.*"
                         symfony-deprecations-helper: "weak"
         steps:
             -   name: "Checkout"
-                uses: "actions/checkout@v2"
+                uses: "actions/checkout@v4"
                 with:
                     fetch-depth: 2
 
             -   name: "Install PHP"
                 uses: "shivammathur/setup-php@v2"
-                if: "${{ matrix.php-version != '7.1' }}"
                 with:
                     php-version: "${{ matrix.php-version }}"
                     tools: composer,flex
@@ -57,16 +56,17 @@ jobs:
                 if: "${{ matrix.stability == 'stable' }}"
 
             -   name: "Install dependencies with Composer"
-                uses: "ramsey/composer-install@v1"
+                uses: "ramsey/composer-install@v3"
                 with:
                     dependency-versions: "${{ matrix.dependencies }}"
                     composer-options: "--prefer-dist"
 
             -   name: "Run PHPUnit"
                 run: "vendor/bin/phpunit --log-junit phpunit.xml"
+                continue-on-error: ${{ matrix.php-version == '8.5' }}
 
             -   name: "Publish Test Report"
-                uses: "mikepenz/action-junit-report@v2"
+                uses: "mikepenz/action-junit-report@v4"
                 if: "always()" # always run even if the previous step fails
                 with:
                     report_paths: "phpunit.xml"

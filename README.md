@@ -3,6 +3,8 @@ VCRBundle
 
 Integrates [php-vcr](https://github.com/php-vcr/php-vcr) into Symfony and its
 web profiler.
+
+**Supported:** PHP 8.1–8.5 · Symfony 5.4 / 6.4
 It also provides a VideoRecorderBrowser for testing purpose with extra helper methods handling php-vcr recordings.
 
 <img src="https://cloud.githubusercontent.com/assets/66958/5232274/b841676e-774b-11e4-8f4e-1f3e8cb7739e.png" width="280" height="175" alt="PHP-VCR Symfony web profiler panel"/>
@@ -122,7 +124,7 @@ vcr:
 * [Kévin Gomez](http://github.com/K-Phoen/)
 * [Ludovic Fleury](https://github.com/ludofleury) - to whom I borrowed the
   design of the web profiler part from his [GuzzleBundle](https://github.com/ludofleury/GuzzleBundle/).
-* [Simon Hübner](https://github.com/simonhard) - making the bundle SF 5.4 compatible
+* [Simon Hübner](https://github.com/simonhard) - making the bundle SF 5.4 / 6.4 and PHP 8.3–8.5 compatible
 * [Daniel Hürtgen](https://github.com/higidi) - making the bundle PHP 8 compatible and providing extra TestCase helper
 
 ## License

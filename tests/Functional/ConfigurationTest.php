@@ -19,8 +19,13 @@ class ConfigurationTest extends WebTestCase
      */
     protected function getContainerConfiguration(string $name, array $kernelOptions = []): array
     {
-        static::bootKernel($kernelOptions);
-        $kernel = static::$kernel;
+        // Create a fresh kernel without booting it to avoid double-compilation errors
+        // that occur in Symfony 6.4+ when buildContainer() is called on an already-booted kernel.
+        $kernel = static::createKernel($kernelOptions);
+
+        $initBundles = new \ReflectionMethod($kernel, 'initializeBundles');
+        $initBundles->setAccessible(true);
+        $initBundles->invoke($kernel);
 
         $method = new \ReflectionMethod($kernel, 'buildContainer');
         $method->setAccessible(true);
