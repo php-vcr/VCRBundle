@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^8.1",
-        "php-vcr/php-vcr": "^1.5",
+        "php-vcr/php-vcr": "^1.6",
         "symfony/browser-kit": "^5.4|^6.4",
         "symfony/config": "^5.4|^6.4",
         "symfony/dependency-injection": "^5.4|^6.4",

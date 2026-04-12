@@ -13,12 +13,4 @@
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
     </php>
 
-    <source>
-        <include>
-            <directory>src</directory>
-        </include>
-        <exclude>
-            <directory>src/Resources</directory>
-        </exclude>
-    </source>
 </phpunit>
